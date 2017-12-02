@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import TWebView from './TWebView';
 
 class ToiletPage extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+
   render() {
     return (
-      <View>
-        <Text style={styles.text}>卫生间</Text>
+      <View style={styles.container}>
+        <TWebView url='http://sf.gg'></TWebView>
       </View>
     );
   }
 }
 
 let styles = StyleSheet.create({
-  text: {
-    fontSize: 60
+  container: {
+    flex: 1
   }
 });
 
