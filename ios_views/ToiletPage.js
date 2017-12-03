@@ -11,7 +11,7 @@ class ToiletPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TWebView url='http://localhost:63342/toilet/html/nearby.html?_ijt=5l8n36ecioqas8li3g84tqjto8'></TWebView>
+        <TWebView url='http://sf.gg'></TWebView>
       </View>
     );
   }
