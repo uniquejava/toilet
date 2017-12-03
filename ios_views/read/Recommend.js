@@ -7,14 +7,7 @@ class Recommend extends Component {
       <View>
         <View>
           <View>
-            <Text>推荐专题</Text>
-          </View>
-          <View>
-            <View></View>
-            <View></View>
-          </View>
-          <View>
-            <Text>查看更多同期专题</Text>
+            <Text>主题</Text>
           </View>
         </View>
       </View>
