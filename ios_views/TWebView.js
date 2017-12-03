@@ -24,7 +24,7 @@ class TWebView extends Component {
           <WebView source={{uri: this.props.url}}
                    startInLoadingState={true}
                    onError={() => this.showError()}
-                   style={{marginTop: 20}}></WebView>
+                   style={{marginTop: -50, marginBottom: -50}}></WebView>
         }
 
       </View>
