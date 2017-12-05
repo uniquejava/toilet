@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, NavigatorIOS } from 'react-native';
 import Search from './read/Search';
 import Topic from './read/Topic';
 import Category from './read/Category';
@@ -15,8 +15,23 @@ class Hr extends Component {
   }
 }
 
+export default class ReadPage extends Component {
+  render() {
+    return (
+      <NavigatorIOS
+        initialRoute={{
+          component: MyScene,
+          title: '阅读',
+          navigationBarHidden: true
+        }}
+        style={{flex: 1}}
+      />
+    )
+      ;
+  }
+}
 
-class ReadPage extends Component {
+class MyScene extends Component {
   constructor(props) {
     super(props);
 
@@ -27,13 +42,14 @@ class ReadPage extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Search/>
         <Hr/>
         {
           this.state.isShow ?
             <ScrollView>
               <Topic/>
+              <Hr/>
               <Recommend/>
               <Category/>
               <Recommend/>
@@ -56,8 +72,8 @@ class ReadPage extends Component {
 }
 
 let styles = StyleSheet.create({
-  text: {
-    fontSize: 60
+  container: {
+    flex: 1
   },
   hr: {
     borderColor: '#F0F0F0',
@@ -65,5 +81,3 @@ let styles = StyleSheet.create({
     marginTop: 10
   }
 });
-
-export default ReadPage;
