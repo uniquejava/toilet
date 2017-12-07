@@ -51,7 +51,9 @@ class MyScene extends Component {
               <Topic/>
               <Hr/>
               <Recommend/>
+              <Hr/>
               <Category/>
+              <Hr/>
               <Recommend/>
             </ScrollView>
             :
