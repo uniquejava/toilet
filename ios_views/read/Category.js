@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Util from '../util';
+import List from './List';
 
 class Category extends Component {
+  constructor(props) {
+    super(props);
+
+    console.log(props);
+    this.state = {
+      data: props.data
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -11,21 +21,15 @@ class Category extends Component {
         </View>
 
         <View style={styles.items}>
-          <View style={styles.item}>
-            <Text style={styles.title}>互联网</Text>
-          </View>
-
-          <View style={[styles.item]}>
-            <Text style={styles.title}>散文</Text>
-          </View>
-
-          <View style={styles.item}>
-            <Text style={styles.title}>笑话</Text>
-          </View>
-
-          <View style={[styles.item]}>
-            <Text style={styles.title}>管理</Text>
-          </View>
+          {
+            this.state.data.map(d => {
+              return (
+                <View style={styles.item} key={d.text}>
+                  <Text style={styles.title}>{d.text}</Text>
+                </View>
+              );
+            })
+          }
         </View>
 
       </View>

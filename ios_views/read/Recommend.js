@@ -13,46 +13,32 @@ class Recommend extends Component {
   }
 
   render() {
+    let views1 = [];
+    let views2 = [];
+    for (var i = 0; i < 8; i++) {
+      let view = (
+        <View style={[styles.image_item]} key={i}>
+          <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
+          <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
+        </View>
+      );
+
+      if (i < 4) {
+        views1.push(view);
+      } else {
+        views2.push(view);
+      }
+    }
     return (
       <View style={styles.container}>
         <View>
           <Text style={[styles.text1, styles.title_top]}>{this.state.name}</Text>
         </View>
         <View style={styles.images}>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
+          {views1}
         </View>
         <View style={styles.images}>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
-          <View style={[styles.image_item]}>
-            <Image resizeMode="cover" style={[styles.image, styles.shadow]} source={{uri: imageUrl}}/>
-            <Text style={styles.title} numberOfLines={2}>标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一标题一</Text>
-          </View>
+          {views2}
         </View>
         <View></View>
       </View>

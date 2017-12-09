@@ -53,7 +53,7 @@ class MyScene extends Component {
               <Hr/>
               <Recommend name="热门专题"/>
               <Hr/>
-              <Category/>
+              <Category data={this.state.category}/>
               <Hr/>
               <Recommend name="清新一刻"/>
             </ScrollView>
@@ -86,7 +86,8 @@ class MyScene extends Component {
 
         that.setState({
           isShow: true,
-          recommendTopic: recommendTopic
+          recommendTopic: recommendTopic,
+          category: category
         });
       } else {
 
