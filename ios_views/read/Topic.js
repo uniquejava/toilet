@@ -4,9 +4,17 @@ import { StyleSheet, Image, View, Text } from 'react-native';
 import Util from '../util';
 
 class Topic extends Component {
+  constructor(props) {
+    super(props);
+    console.log('data----', props.data);
+    this.state = {
+      data: props.data
+    };
+  }
+
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {paddingTop: 10}]}>
         <View>
           <Text style={styles.text1}>推荐专题</Text>
         </View>

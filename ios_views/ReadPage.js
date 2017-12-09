@@ -4,6 +4,7 @@ import Search from './read/Search';
 import Topic from './read/Topic';
 import Category from './read/Category';
 import Recommend from './read/Recommend';
+import Util from './util';
 
 class Hr extends Component {
   render() {
@@ -48,13 +49,13 @@ class MyScene extends Component {
         {
           this.state.isShow ?
             <ScrollView>
-              <Topic/>
+              <Topic data={this.state.recommendTopic}/>
               <Hr/>
-              <Recommend/>
+              <Recommend name="热门专题"/>
               <Hr/>
               <Category/>
               <Hr/>
-              <Recommend/>
+              <Recommend name="清新一刻"/>
             </ScrollView>
             :
             null
@@ -67,8 +68,32 @@ class MyScene extends Component {
 
   componentDidMount() {
     this.setState({
-      isShow: true
+      isShow: false
     });
+    var that = this;
+    Util.get('http://localhost:3000/data/read?type=config', function (data) {
+      console.log(data);
+
+      if (data.status === 1) {
+        let obj = data.data;
+        let hotTopic = obj.hotTopic;
+        let recommendTopic = obj.recommendTopic;
+        let other = obj.other;
+        let category = obj.category;
+
+
+        console.log('recommendTopic=', recommendTopic);
+
+        that.setState({
+          isShow: true,
+          recommendTopic: recommendTopic
+        });
+      } else {
+
+      }
+    }, function (err) {
+      console.log(err);
+    })
   }
 
 }

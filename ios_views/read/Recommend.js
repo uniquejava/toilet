@@ -5,11 +5,18 @@ import Util from '../util';
 const imageUrl = 'http://vignette4.wikia.nocookie.net/awesomeanimeandmanga/images/3/34/K-on!-avatar-200x200.jpg/revision/latest?cb=20110517050049';
 
 class Recommend extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: props.name
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View>
-          <Text style={[styles.text1, styles.title_top]}>热门推荐</Text>
+          <Text style={[styles.text1, styles.title_top]}>{this.state.name}</Text>
         </View>
         <View style={styles.images}>
           <View style={[styles.image_item]}>
