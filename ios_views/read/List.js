@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 import Util from '../util';
+import TWebView from '../TWebView';
 
 class List extends Component {
   constructor(props) {
@@ -32,6 +33,16 @@ class List extends Component {
     });
   }
 
+  showDetailPage(title, url) {
+    this.state.navigator.push({
+      component: TWebView,
+      title: title,
+      passProps: {
+        url: url
+      }
+    });
+  }
+
 
   render() {
     return (
@@ -40,16 +51,19 @@ class List extends Component {
         data={this.state.data}
         renderItem={({item}) => {
           return (
-            <View style={styles.item} key={item.id}>
-              <View>
-                <Image style={styles.image}
-                       source={{uri: item.img}}></Image>
+            <TouchableOpacity key={item.id} onPress={()=>{this.showDetailPage(item.title, item.url)}}>
+              <View style={styles.item}>
+                <View>
+                  <Image style={styles.image}
+                         source={{uri: item.img}}></Image>
+                </View>
+                <View style={styles.text_wrapper}>
+                  <Text style={styles.title} numberOfLines={1}>{item.title}</Text>
+                  <Text style={styles.time}>{item.time}</Text>
+                </View>
               </View>
-              <View style={styles.text_wrapper}>
-                <Text style={styles.title} numberOfLines={1}>{item.title}</Text>
-                <Text style={styles.time}>{item.time}</Text>
-              </View>
-            </View>
+            </TouchableOpacity>
+
           );
         }}
       />
