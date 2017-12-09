@@ -15,7 +15,6 @@ class List extends Component {
 
   }
 
-
   componentDidMount() {
     let url = this.state.url;
     console.log('url=', url);

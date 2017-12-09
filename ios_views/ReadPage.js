@@ -49,7 +49,7 @@ class MyScene extends Component {
         {
           this.state.isShow ?
             <ScrollView>
-              <Topic data={this.state.recommendTopic}/>
+              <Topic data={this.state.recommendTopic} navigator={this.props.navigator}/>
               <Hr/>
               <Recommend name="热门专题"/>
               <Hr/>
