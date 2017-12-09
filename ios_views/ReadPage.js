@@ -53,7 +53,7 @@ class MyScene extends Component {
               <Hr/>
               <Recommend name="热门专题"/>
               <Hr/>
-              <Category data={this.state.category}/>
+              <Category data={this.state.category} navigator={this.props.navigator}/>
               <Hr/>
               <Recommend name="清新一刻"/>
             </ScrollView>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Util from '../util';
 import List from './List';
 
@@ -9,9 +9,42 @@ class Category extends Component {
 
     console.log(props);
     this.state = {
-      data: props.data
+      data: props.data,
+      navigator: props.navigator
     };
+    this.goToList.bind(this);
+
   }
+
+  goToList(name) {
+    let type = this.getType(name);
+    let url = `http://localhost:3000/data/read?type=${type}`;
+
+    this.state.navigator.push({
+      component: List,
+      title: name,
+      barTintColor: '#FFF',
+      passProps: {
+        url: url
+      }
+    });
+  }
+
+  getType(name){
+    let type = 'it';
+    switch (name) {
+      case '分类管理1':
+        type = 'it';
+        break;
+      case '分类管理2':
+        type = 'cookie';
+        break;
+      default:
+        break;
+    }
+    return type;
+  }
+
 
   render() {
     return (
@@ -24,9 +57,9 @@ class Category extends Component {
           {
             this.state.data.map(d => {
               return (
-                <View style={styles.item} key={d.text}>
+                <TouchableOpacity style={styles.item} key={d.text} onPress={()=>{this.goToList(d.text)}}>
                   <Text style={styles.title}>{d.text}</Text>
-                </View>
+                </TouchableOpacity>
               );
             })
           }
